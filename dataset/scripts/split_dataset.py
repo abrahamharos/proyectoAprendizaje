@@ -93,7 +93,43 @@ print(" ~ Caso 2.2 Guardado en ../casos/2.2/")
 # Caso 2.3: Predecir CO2 dados km/l combinados (ciudad y carretera), potencia, modelo y cilindros.
 
 # Caso 3.1: Clasificar la instancia por calificación de contaminación del aire
+#           Parametros: Modelo, Cilindros, potencia, tamaño, Rendimiento combinado, CO2, NOx
+X1 = data.iloc[:, 3].values.reshape(-1, 1) # Modelo
+X2 = data.iloc[:, 6:9].values.reshape(-1, 3) # Cilindros, potencia, tamaño
+X3 = data.iloc[:, 12].values.reshape(-1, 1) # Km/l Combinados (carretera y ciudad)
+X4 = data.iloc[:, 14:16].values.reshape(-1, 2) # CO2, NOx
+X = np.append(X1, X2, 1)
+X = np.append(X, X3, 1)
+X = np.append(X, X4, 1) # [Modelo, Cilindros, potencia, tamaño, Rendimiento combinado, CO2, NOx]
+
+y = data.iloc[:, 17].values.reshape(-1, 1) # Calificacion contaminacion aire
+
+# Split dataset 80% train 20% test
+XTrain, XTest, yTrain, yTest = train_test_split(X, y, test_size=0.2)
+
+np.savetxt('../casos/3.1/XTrain.csv', XTrain)
+np.savetxt('../casos/3.1/XTest.csv', XTest)
+np.savetxt('../casos/3.1/yTrain.csv', yTrain)
+np.savetxt('../casos/3.1/yTest.csv', yTest)
+print(" ~ Caso 3.1 Guardado en ../casos/3.1/")
 
 # Caso 4.1: Clasificar la instancia por calificación de emisiones de gas
+#           Parametros: Modelo, Cilindros, potencia, tamaño, Rendimiento combinado, CO2, NOx
+X1 = data.iloc[:, 3].values.reshape(-1, 1) # Modelo
+X2 = data.iloc[:, 6:9].values.reshape(-1, 3) # Cilindros, potencia, tamaño
+X3 = data.iloc[:, 12].values.reshape(-1, 1) # Km/l Combinados (carretera y ciudad)
+X4 = data.iloc[:, 14:16].values.reshape(-1, 2) # CO2, NOx
+X = np.append(X1, X2, 1)
+X = np.append(X, X3, 1)
+X = np.append(X, X4, 1) # [Modelo, Cilindros, potencia, tamaño, Rendimiento combinado, CO2, NOx]
 
-# Caso 5.1: Utilizar el tipo de transmisión (binario) como clasificador usando caballos de fuerza y otros atributos numéricos como variables independientes.
+y = data.iloc[:, 16].values.reshape(-1, 1) # Calificacion emisiones gas
+
+# Split dataset 80% train 20% test
+XTrain, XTest, yTrain, yTest = train_test_split(X, y, test_size=0.2)
+
+np.savetxt('../casos/4.1/XTrain.csv', XTrain)
+np.savetxt('../casos/4.1/XTest.csv', XTest)
+np.savetxt('../casos/4.1/yTrain.csv', yTrain)
+np.savetxt('../casos/4.1/yTest.csv', yTest)
+print(" ~ Caso 4.1 Guardado en ../casos/4.1/")
