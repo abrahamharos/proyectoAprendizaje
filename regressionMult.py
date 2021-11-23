@@ -1,4 +1,5 @@
 import load_dataset as ld
+import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
@@ -31,3 +32,6 @@ for case in cases:
     print("\n\nCase: " + case)
     print("Accuracy:", accuracy)
     print("Mean Squared Error:", meanSquareError)
+
+    np.savetxt('roc/' + str(case) + '/multi/yTest.csv', yTest)
+    np.savetxt('roc/' + str(case) + '/multi/yPredicted.csv', prediction)

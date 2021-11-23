@@ -1,5 +1,6 @@
 import os
 import load_dataset as ld
+import numpy as np
 from graphviz import Source
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.metrics import mean_squared_error
@@ -56,3 +57,6 @@ for case in cases:
     treeFilename = cases[case]['tree_filename']
     image_filename = os.path.join(IMAGES_PATH, treeFilename)
     Source(dot_src).render(image_filename, format="png", cleanup=True)
+
+    np.savetxt('roc/' + str(case) + '/decision_tree/yTest.csv', yTest)
+    np.savetxt('roc/' + str(case) + '/decision_tree/yPredicted.csv', predictedValues)

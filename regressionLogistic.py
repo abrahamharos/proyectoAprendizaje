@@ -1,6 +1,7 @@
 import load_dataset as ld
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import mean_squared_error
+import numpy as np
 
 # Casos en los que se usará regresion logistica:
 #   Caso 3.1: Km/l Clasificar instancia por calificacion de contaminacion del aire.
@@ -26,3 +27,6 @@ for case in cases:
     print("\n\nCase: " + case)
     print("Accuracy:", accuracy)
     print("Mean Squared Error:", meanSquareError)
+
+    np.savetxt('roc/' + str(case) + '/logistica/yTest.csv', yTest)
+    np.savetxt('roc/' + str(case) + '/logistica/yPredicted.csv', prediction)

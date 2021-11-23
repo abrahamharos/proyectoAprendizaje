@@ -1,5 +1,6 @@
 import load_dataset as ld
 from sklearn.neighbors import KNeighborsClassifier
+import numpy as np
 
 XTrain, XTest, yTrain, yTest = ld.load_dataset('3.1')
 
@@ -22,6 +23,8 @@ for i in range(len(n_neighbors)):
 print("\nCase 3.1")
 print("N-Neighbors: {}".format(n_neighbors[maxModelIndex]))
 print("Accuracy: {}\n".format(maxModelScore))
+np.savetxt('roc/3.1/knn/yTest.csv', yTest)
+np.savetxt('roc/3.1/knn/yPredicted.csv', Y_predTemp)
 
 
 XTrain, XTest, yTrain, yTest = ld.load_dataset('4.1')
@@ -45,3 +48,5 @@ for i in range(len(n_neighbors)):
 print("\nCase 4.1")
 print("N-Neighbors: {}".format(n_neighbors[maxModelIndex]))
 print("Accuracy: {}".format(maxModelScore))
+np.savetxt('roc/4.1/knn/yTest.csv', yTest)
+np.savetxt('roc/4.1/knn/yPredicted.csv', Y_predTemp)
